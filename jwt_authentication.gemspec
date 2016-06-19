@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "actionmailer", ">= 3.2.6", "< 5"
   s.add_dependency "actionpack", ">= 3.2.6", "< 5"
-  s.add_dependency "devise", "~> 3.2"
-  s.add_dependency "jwt", "~> 1.2.1"
+  s.add_dependency "devise", ">= 3.2"
+  s.add_dependency "jwt", "~> 1.5.0"
 
   s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "inch", "~> 0.4"
