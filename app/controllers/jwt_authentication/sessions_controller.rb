@@ -1,5 +1,7 @@
 class JwtAuthentication::SessionsController < Devise::SessionsController
   include JwtAuthentication::Concerns::JwtControllerHelpers
+  include JwtAuthentication::JwtAuthenticationHandler
+  handle_jwt_authentication
 
   def create
     self.resource = warden.authenticate!({ scope: resource_name, recall: "#{controller_path}#new", store: false })
