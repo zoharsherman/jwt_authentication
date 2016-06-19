@@ -60,22 +60,13 @@ module JwtAuthentication
 
     module ClassMethods
       def acts_as_jwt_authenticatable(options = {})
+        mattr_accessor :jwt_timeout_remember_me
+        mattr_accessor :jwt_timeout
+        mattr_accessor :jwt_key_fields
         before_save :ensure_authentication_token
-        @jwt_timeout_remember_me = options[:timeout_remember_me] || JwtAuthentication.jwt_timeout_remember_me
-        @jwt_timeout = options[:timeout] || JwtAuthentication.jwt_timeout
-        @jwt_key_fields = options[:key_fields] || JwtAuthentication.key_fields
-      end
-
-      def jwt_timeout
-        self.instance_variable_get("@jwt_timeout")
-      end
-
-      def jwt_timeout_remember_me
-        self.instance_variable_get("@jwt_timeout_remember_me")
-      end
-
-      def jwt_key_fields
-        self.instance_variable_get("@jwt_key_fields")
+        self.jwt_timeout_remember_me = options[:timeout_remember_me] || JwtAuthentication.jwt_timeout_remember_me
+        self.jwt_timeout = options[:timeout] || JwtAuthentication.jwt_timeout
+        self.jwt_key_fields = options[:key_fields] || JwtAuthentication.key_fields
       end
     end
   end
